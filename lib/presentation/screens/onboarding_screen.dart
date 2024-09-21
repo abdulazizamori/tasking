@@ -8,10 +8,12 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  PageController nextPage = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        controller: nextPage,
         children: [
 
           Column(
@@ -27,21 +29,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               SizedBox(height: 30,),
-              Container(
-                width: 100,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.black,
-                ),
-                child: Center(
-                    child: Text(
-                  'Next',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+              InkWell(
+                onTap: (){
+                  nextPage.animateToPage(1, duration: Duration(milliseconds: 700), curve: Curves.easeIn);
+                },
+                child: Container(
+                  width: 100,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.black,
                   ),
-                )),
+                  child: Center(
+                      child: Text(
+                    'Next',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  )),
+                ),
               ),
             ],
           ),
@@ -58,17 +65,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               SizedBox(height: 30,),
-              Container(
-                width: 100,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.black,
+              InkWell(
+                onTap: (){
+                  nextPage.animateToPage(2, duration: Duration(milliseconds: 700), curve: Curves.easeIn);
+                },
+                child: Container(
+                  width: 100,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.black,
+                  ),
+                  child: Center(child: Text('Next',style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),)),
                 ),
-                child: Center(child: Text('Next',style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),)),
               ),
             ],
           ),
@@ -85,17 +97,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               SizedBox(height: 30,),
-              Container(
-                width: 100,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.black,
+              InkWell(
+                onTap: (){},
+                child: Container(
+                  width: 100,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.black,
+                  ),
+                  child: Center(child: Text('Next',style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),)),
                 ),
-                child: Center(child: Text('Next',style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),)),
               ),
             ],
           ),
