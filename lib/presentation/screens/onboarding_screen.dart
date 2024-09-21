@@ -15,7 +15,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           Column(
             children: [
-              Image.asset('assets/images/first.jpeg'),
+              Image.asset('assets/images/first.jpeg',fit: BoxFit.fill,),
               Text(
                 'Hello in E commerse',
                 style: TextStyle(
