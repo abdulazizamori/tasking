@@ -39,6 +39,7 @@ dependencies:
   another_flutter_splash_screen: ^1.2.1
   dio: ^5.7.0
   smooth_page_indicator: ^1.2.0+3
+  get_it: ^8.0.0
 
 dev_dependencies:
   flutter_test:
