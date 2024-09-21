@@ -49,7 +49,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.black,
+                    color: Colors.deepPurple,
                   ),
                   child: const Center(
                     child: Text(
@@ -69,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 controller: nextPage,
                 count: 3,
                 effect: const WormEffect(
-                  activeDotColor: Colors.black,
+                  activeDotColor: Colors.deepPurple,
                   dotColor: Colors.grey,
                   dotHeight: 10,
                   dotWidth: 10,
@@ -108,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.black,
+                    color: Colors.deepPurple,
                   ),
                   child: const Center(
                     child: Text(
@@ -128,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 controller: nextPage,
                 count: 3,
                 effect: const WormEffect(
-                  activeDotColor: Colors.black,
+                  activeDotColor: Colors.deepPurple,
                   dotColor: Colors.grey,
                   dotHeight: 10,
                   dotWidth: 10,
@@ -159,11 +159,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               InkWell(
                 onTap: () {},
                 child: Container(
-                  width: 100,
+                  width: 150,
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.black,
+                    color: Colors.deepPurple,
                   ),
                   child: const Center(
                       child: Text(
@@ -175,19 +175,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   )),
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              // const SizedBox(
+              //   height: 30,
+              // ),
+              Spacer(),
               SmoothPageIndicator(
                 controller: nextPage,
                 count: 3,
                 effect: const WormEffect(
-                  activeDotColor: Colors.black,
+                  activeDotColor: Colors.deepPurple,
                   dotColor: Colors.grey,
                   dotHeight: 10,
                   dotWidth: 10,
                   spacing: 16.0,
                 ),
+              ),
+              const SizedBox(
+                height: 30,
               ),
             ],
           ),
