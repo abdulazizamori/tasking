@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               width: 300,
               child: Column(
                 children: [
-                  Image.asset("assets/ecommerse.png" , width: 200,height: 200,),
+                  Image.asset("assets/images/ecommerse.png" , width: 200,height: 200,),
                   const SizedBox(
                     height: 10,
                   ),
