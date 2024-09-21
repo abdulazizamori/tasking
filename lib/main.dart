@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: FlutterSplashScreen.fadeIn(
-        duration: const Duration(milliseconds: 2000),
+        duration: const Duration(milliseconds: 4000),
         backgroundColor: Colors.white,
           childWidget: Center(
             child: SizedBox(
