@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:tasking/core/network/products/dio.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
-import '../../data/repo/products-repo/repo.dart';
+import '../../data/repo/repo.dart';
 
 GetIt di = GetIt.instance..allowReassignment = true;
 

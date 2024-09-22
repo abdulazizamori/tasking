@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../data/model/ecommerce-model.dart';
-import '../../../data/repo/products-repo/repo.dart';
+import '../../../data/repo/repo.dart';
 
 part 'ecommerce_state.dart';
 
