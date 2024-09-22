@@ -38,7 +38,12 @@ dependencies:
   flutter_bloc: ^8.1.6
   another_flutter_splash_screen: ^1.2.1
   dio: ^5.7.0
+<<<<<<< HEAD
   shared_preferences: ^2.3.2
+=======
+  smooth_page_indicator: ^1.2.0+3
+  get_it: ^8.0.0
+>>>>>>> b9806c74af74192d4076fdbdd7919c9fb58c9093
 
 dev_dependencies:
   flutter_test:

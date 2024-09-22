@@ -1,9 +1,10 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:tasking/presentation/screens/home_screen.dart';
+import 'package:tasking/core/di/di.dart';
 import 'package:tasking/presentation/screens/onboarding_screen.dart';
 
-void main() {
+void main() async{
+  await init();
   runApp(const MyApp());
 }
 
@@ -31,13 +32,13 @@ class MyApp extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text('Ecommerse UI Theme',style: TextStyle(fontSize: 20 ),),
+                  const Text('Ecommerse',style: TextStyle(fontSize: 20 ),),
                 ],
               ),
             ),
           ),
           onAnimationEnd: () => debugPrint("On Fade In End"),
-          nextScreen: OnboardingScreen(),
+          nextScreen: const OnboardingScreen(),
       ),
       // routes: {
       //   'register' : (context)=>
