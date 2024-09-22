@@ -17,7 +17,7 @@ class RepoImplementation extends Repotisory{
 
   @override
   Future<Response?> getAllData() async{
-    return await dioHelper?.getData(url: baseUrl+endpoint);
+    return await dioHelper?.getData(url: '$baseUrl = $endpoint');
   }
 
 
