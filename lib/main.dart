@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text('Ecommerse UI Theme',style: TextStyle(fontSize: 20 ),),
+                  const Text('Ecommerse',style: TextStyle(fontSize: 20 ),),
                 ],
               ),
             ),
