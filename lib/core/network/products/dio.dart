@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:tasking/data/online/endpoints.dart';
+import 'package:tasking/core/network/endpoints.dart';
 
 abstract class DioHelper{
 

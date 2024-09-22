@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:tasking/data/online/repo.dart';
-import 'package:tasking/logic/model/ecommerce-model.dart';
+
+import '../../../data/model/ecommerce-model.dart';
+import '../../../data/repo/products-repo/repo.dart';
 
 part 'ecommerce_state.dart';
 
