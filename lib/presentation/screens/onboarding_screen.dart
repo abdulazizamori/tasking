@@ -178,7 +178,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               // const SizedBox(
               //   height: 30,
               // ),
-              Spacer(),
+              const Spacer(),
               SmoothPageIndicator(
                 controller: nextPage,
                 count: 3,

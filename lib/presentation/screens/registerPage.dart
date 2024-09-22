@@ -12,7 +12,7 @@ class _RegisterpageState extends State<Registerpage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Sign up"),
+          title: const Text("Sign up"),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -22,25 +22,25 @@ class _RegisterpageState extends State<Registerpage> {
                 "Create your account",
                 style: TextStyle(fontSize: 15, color: Colors.grey[700]),
               ),
-              SizedBox(height: 40,),
+              const SizedBox(height: 40,),
               InkWell(
                   child: CircleAvatar(
                 backgroundColor: Colors.black,
                 radius: 40.0,
                 child: CircleAvatar(
                   radius: 38.0,
+                  backgroundColor: Colors.white,
                   child: ClipOval(
                     child: Image.asset('images/newimage.png'),
                   ),
-                  backgroundColor: Colors.white,
                 ),
               )),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-                child: Container(
+                child: SizedBox(
                   width: 600,
                   child: TextFormField(
                       decoration: InputDecoration(
@@ -52,7 +52,7 @@ class _RegisterpageState extends State<Registerpage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-                child: Container(
+                child: SizedBox(
                   width: 600,
                   child: TextFormField(
                       decoration: InputDecoration(
@@ -64,7 +64,7 @@ class _RegisterpageState extends State<Registerpage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-                child: Container(
+                child: SizedBox(
                   width: 500,
                   child: TextFormField(
                       obscureText: true,
@@ -77,7 +77,7 @@ class _RegisterpageState extends State<Registerpage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-                child: Container(
+                child: SizedBox(
                   width: 500,
                   child: TextFormField(
                       obscureText: true,
@@ -88,15 +88,15 @@ class _RegisterpageState extends State<Registerpage> {
                           prefixIcon: const Icon(Icons.password))),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              ElevatedButton(onPressed: () {}, child: Text("Sign up")),
-              SizedBox(height: 20,),
+              ElevatedButton(onPressed: () {}, child: const Text("Sign up")),
+              const SizedBox(height: 20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Already have an account?"),
+                  const Text("Already have an account?"),
                   TextButton(
                       onPressed: () {},
                       child: const Text(
