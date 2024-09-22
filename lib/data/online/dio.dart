@@ -47,6 +47,7 @@ class DioImplementation extends DioHelper{
     return await dio.put(url!, data: data, queryParameters: {});
   }
 
+  @override
   Future<Response> getData(
       {String? url, dynamic data, String? token, dynamic param}) async {
     dio.options.headers = {

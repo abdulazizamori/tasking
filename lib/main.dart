@@ -1,16 +1,12 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:tasking/core/di/di.dart';
-
-import 'package:tasking/presentation/screens/home_screen.dart';
-import 'package:tasking/presentation/screens/registerPage.dart';
-
 import 'package:tasking/presentation/screens/onboarding_screen.dart';
 
 
 void main() async{
   await init();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +29,7 @@ class MyApp extends StatelessWidget {
               width: 300,
               child: Column(
                 children: [
-                  Image.asset("assets/ecommerse.png" , width: 200,height: 200,),
+                  Image.asset("assets/images/ecommerse.png" , width: 200,height: 200,),
                   const SizedBox(
                     height: 10,
                   ),
@@ -43,7 +39,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           onAnimationEnd: () => debugPrint("On Fade In End"),
-          nextScreen: Registerpage(),
+          nextScreen: const OnboardingScreen(),
       ),
       // routes: {
       //   'register' : (context)=>
