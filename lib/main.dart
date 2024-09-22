@@ -2,7 +2,7 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasking/core/di/di.dart';
-import 'package:tasking/logic/get_product/cubit/get_data_cubit.dart';
+import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 import 'package:tasking/presentation/screens/onboarding_screen.dart';
 
 void main() async {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => di<GetDataCubit>()..getDataStore(),
+          create: (_) => di<EcommerceCubit>()..getEcommerceData(),
         ),
       ],
       child: MaterialApp(

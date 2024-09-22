@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasking/logic/get_product/cubit/get_data_cubit.dart';
+import '../../logic/cubit/products-cubit/ecommerce_cubit.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -11,12 +11,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<GetDataCubit, GetDataState>(
+    return BlocConsumer<EcommerceCubit, EcommerceState>(
       listener: (context, state) {},
       builder: (context, state) {
-        final getCubit = context.read<GetDataCubit>();
+        final getCubit = context.read<EcommerceState>();
         return Scaffold(
-          body: state is GetDataSucess
+          body: state is EcommerceLoaded
               ? GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, // Number of columns
