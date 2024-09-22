@@ -1,6 +1,6 @@
-import 'package:tasking/data/online/dio.dart';
+import 'package:tasking/core/network/products/dio.dart';
 import 'package:dio/dio.dart';
-import 'package:tasking/data/online/endpoints.dart';
+import 'package:tasking/core/network/endpoints.dart';
 
 abstract class Repotisory{
 
@@ -17,7 +17,7 @@ class RepoImplementation extends Repotisory{
 
   @override
   Future<Response?> getAllData() async{
-    return await dioHelper?.getData(url: baseUrl+endpoint);
+    return await dioHelper?.getData(url: '$baseUrl = $endpoint');
   }
 
 

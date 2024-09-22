@@ -22,9 +22,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             text: 'Hello in the Store',
             btnText: 'Next',
             onTap: () {
-              nextPage.animateToPage(1,
-                  duration: const Duration(milliseconds: 700),
-                  curve: Curves.easeIn);
+              nextPage.animateToPage(
+                1,
+                duration: const Duration(milliseconds: 700),
+                curve: Curves.easeIn,
+              );
             },
           ),
           CustomOnboardPage(
@@ -32,9 +34,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             text: 'Continu to the third Screen',
             btnText: 'Next',
             onTap: () {
-              nextPage.animateToPage(2,
-                  duration: const Duration(milliseconds: 700),
-                  curve: Curves.easeIn);
+              nextPage.animateToPage(
+                2,
+                duration: const Duration(milliseconds: 700),
+                curve: Curves.easeIn,
+              );
             },
           ),
           CustomOnboardPage(
@@ -42,8 +46,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             text: 'Continu to the Home Screen',
             btnText: 'Get Started',
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HomeScreen(),
+                ),
+              );
             },
           ),
         ],
