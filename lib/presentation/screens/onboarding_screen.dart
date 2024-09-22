@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasking/presentation/screens/home_screen.dart';
+import 'package:tasking/presentation/screens/registerPage.dart';
 import 'package:tasking/presentation/widgets/custom_onboard_page.dart';
 import 'package:tasking/shared/const.dart';
 
@@ -49,7 +49,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
+                  builder: (context) =>  const Registerpage(),
                 ),
               );
             },

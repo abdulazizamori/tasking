@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasking/core/di/di.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 import 'package:tasking/presentation/screens/onboarding_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,51 +16,59 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => di<EcommerceCubit>()..getEcommerceData(),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter TASKAAAT',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: FlutterSplashScreen.fadeIn(
-          duration: const Duration(milliseconds: 4000),
-          backgroundColor: Colors.white,
-          childWidget: Center(
-            child: SizedBox(
-              height: 300,
-              width: 300,
-              child: Column(
-                children: [
-                  Image.asset(
-                    "assets/images/ecommerse.png",
-                    width: 200,
-                    height: 200,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    'Ecommerse',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
-              ),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      // Use builder only if you need to use library outside ScreenUtilInit context
+      builder: (_ , child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<EcommerceCubit>(
+              create: (_) => di<EcommerceCubit>()..getEcommerceData(),
             ),
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter TASKAAAT',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            home: FlutterSplashScreen.fadeIn(
+              duration: const Duration(milliseconds: 4000),
+              backgroundColor: Colors.white,
+              childWidget: Center(
+                child: SizedBox(
+                  height: 300,
+                  width: 300,
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        "assets/images/ecommerse.png",
+                        width: 200,
+                        height: 200,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        'Ecommerse',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              onAnimationEnd: () => debugPrint("On Fade In End"),
+              nextScreen: const OnboardingScreen(),
+            ),
+// routes: {
+//   'register' : (context)=>
+// },
           ),
-          onAnimationEnd: () => debugPrint("On Fade In End"),
-          nextScreen: const OnboardingScreen(),
-        ),
-        // routes: {
-        //   'register' : (context)=>
-        // },
-      ),
+        );
+      },
     );
   }
 }

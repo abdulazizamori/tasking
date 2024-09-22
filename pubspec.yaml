@@ -44,6 +44,8 @@ dependencies:
   get_it: ^8.0.0
   dartz:
   logger:
+  flutter_screenutil: ^5.9.3
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

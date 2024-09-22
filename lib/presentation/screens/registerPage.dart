@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
-import 'package:tasking/presentation/screens/Test.dart';
 
-import 'onboarding_screen.dart';
+
 
 class Registerpage extends StatefulWidget {
   const Registerpage({super.key});
@@ -60,10 +59,10 @@ class _RegisterpageState extends State<Registerpage> {
           ),
         );
 
-        if (response.statusCode == 201) {
+        if (response.statusCode == 200) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const test()),
+            MaterialPageRoute(builder: (context) =>  UserListPage()),
           );
         } else {
           // Handle error
