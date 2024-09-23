@@ -19,8 +19,8 @@ class _CustomGridViewState extends State<CustomGridView> {
           final cubit = context.read<EcommerceCubit>();
 
           return Container(
-            height: 550,
-            width: 400,
+            height: 550.h,
+            width: 400.w,
             color: Colors.white,
             child: ListView.builder(
               itemCount: cubit.Ecomodel!.length,
@@ -31,8 +31,8 @@ class _CustomGridViewState extends State<CustomGridView> {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     leading: Container(
-                      height: 100,
-                      width: 55,
+                      height: 100.h,
+                      width: 55.w,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         physics: BouncingScrollPhysics(),
@@ -57,15 +57,20 @@ class _CustomGridViewState extends State<CustomGridView> {
                             );
                           } else {
                             return SizedBox(
-                              width: 55,
-                              height: 100,
+                              width: 55.w,
+                              height: 100.h,
                             );
                           }
                         },
                       ),
                     ),
                     title: Text(
-                      "Title:\n${cubit.Ecomodel![index].title.toString()}",
+                      "Title: ${cubit.Ecomodel![index].title.toString()}",
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    subtitle: Text(
+                      maxLines: 3,
+                      "${cubit.Ecomodel![index].description.toString()}",
                       style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                     trailing: Text(

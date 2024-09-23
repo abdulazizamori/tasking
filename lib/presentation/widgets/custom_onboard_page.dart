@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasking/presentation/widgets/custom_page_indicator.dart';
 
 class CustomOnboardPage extends StatelessWidget {
@@ -26,8 +27,8 @@ class CustomOnboardPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.0),
           child: Image.asset(
             img,
-            width: 400,
-            height: 250,
+            width: 400.w,
+            height: 250.h,
             fit: BoxFit.fill,
           ),
         ),
@@ -46,8 +47,8 @@ class CustomOnboardPage extends StatelessWidget {
         InkWell(
           onTap: onTap,
           child: Container(
-            width: 150,
-            height: 50,
+            width: 150.w,
+            height: 50.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.deepPurple,

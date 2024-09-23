@@ -9,13 +9,14 @@ class CustomSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              height: 35,
-              width: 300,
+              height: 35.h,
+              width: 290.w,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16)
@@ -37,7 +38,7 @@ class CustomSearchBar extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Icons.list,
-                size: 40,
+                size: 40.sp,
                 color: Colors.white,
               ))
         ],
