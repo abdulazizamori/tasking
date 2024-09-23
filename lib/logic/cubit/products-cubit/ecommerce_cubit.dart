@@ -1,6 +1,12 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'dart:convert';
 
+import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+import 'package:meta/meta.dart';
+import 'package:tasking/core/network/dio.dart';
+import 'package:tasking/core/network/endpoints.dart';
+
+import '../../../core/di/di.dart';
 import '../../../data/model/ecommerce-model.dart';
 import '../../../data/repo/repo.dart';
 
@@ -8,7 +14,7 @@ part 'ecommerce_state.dart';
 
 class EcommerceCubit extends Cubit<EcommerceState> {
   EcommerceModel? Ecomodel;
-  final Repotisory repotisory;
+  final Repository repotisory;
   EcommerceCubit(this.repotisory) : super(EcommerceInitial());
 
   Future<void>? getEcommerceData() async{
@@ -25,4 +31,6 @@ class EcommerceCubit extends Cubit<EcommerceState> {
       print("Error--------> $e");
     }
   }
+
+
 }

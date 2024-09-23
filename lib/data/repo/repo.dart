@@ -1,18 +1,18 @@
-import 'package:tasking/core/network/products/dio.dart';
+import 'package:tasking/core/network/dio.dart';
 import 'package:dio/dio.dart';
 import 'package:tasking/core/network/endpoints.dart';
 
-abstract class Repotisory{
+abstract class Repository{
 
   final DioHelper? dioHelper;
 
-  Repotisory(this.dioHelper);
+  Repository(this.dioHelper);
 
   Future<Response?> getAllData();
 
 }
 
-class RepoImplementation extends Repotisory{
+class RepoImplementation extends Repository{
   RepoImplementation(super.dioHelper);
 
   @override
@@ -22,9 +22,12 @@ class RepoImplementation extends Repotisory{
 
 
 
+  }
 
 
 
 
 
-}
+
+
+
