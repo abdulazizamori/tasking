@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocConsumer<EcommerceCubit, EcommerceState>(
       listener: (context, state) {},
       builder: (context, state) {
-        final getCubit = context.read<EcommerceState>();
+        final getCubit = context.read<EcommerceCubit>();
         return Scaffold(
           body: state is EcommerceLoaded
               ? GridView.builder(
