@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocConsumer<EcommerceCubit, EcommerceState>(
       listener: (context, state) {},
       builder: (context, state) {
-        final getCubit = context.read<EcommerceCubit>();
+        final cubit = context.read<EcommerceCubit>();
         return Scaffold(
           body: state is EcommerceLoaded
               ? GridView.builder(
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisCount: 2, // Number of columns
                     childAspectRatio: 1, // Aspect ratio for each grid item
                   ),
-                  itemCount: 30, // Total number of items
+                  itemCount: cubit.Ecomodel!.length, // Total number of items
                   itemBuilder: (context, index) {
                     return Card(
                       elevation: 15,
@@ -31,8 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              'assets/images/first.jpeg',
+                            child: Image.network(
+                              cubit.Ecomodel![index].images!.toString(),
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Ships'),
+                                Text(cubit.Ecomodel![index].title!),
                                 Align(
                                   alignment: Alignment.bottomRight,
                                   child: Text('100 \$'),

@@ -2,7 +2,9 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasking/core/di/di.dart';
+import 'package:tasking/logic/cubit/auth-cubit/auth_cubit.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
+import 'package:tasking/presentation/screens/home_screen.dart';
 import 'package:tasking/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,6 +28,9 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider<EcommerceCubit>(
               create: (_) => di<EcommerceCubit>()..getEcommerceData(),
+            ),
+            BlocProvider<AuthCubit>(
+              create: (_) => di<AuthCubit>(),
             ),
           ],
           child: MaterialApp(
@@ -61,7 +66,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               onAnimationEnd: () => debugPrint("On Fade In End"),
-              nextScreen: const OnboardingScreen(),
+              nextScreen: const HomeScreen(),
             ),
 // routes: {
 //   'register' : (context)=>

@@ -21,7 +21,13 @@ class EcommerceModel {
     this.category,
   });
 
-  factory EcommerceModel.fromRawJson(String str) => EcommerceModel.fromJson(json.decode(str));
+  factory EcommerceModel.fromRawJson(String str) {
+    try {
+      return EcommerceModel.fromJson(json.decode(str));
+    } catch (e) {
+      throw FormatException("Invalid JSON: $e");
+    }
+  }
 
   String toRawJson() => json.encode(toJson());
 
@@ -30,9 +36,9 @@ class EcommerceModel {
     title: json["title"],
     price: json["price"],
     description: json["description"],
-    images: json["images"] == null ? [] : List<String>.from(json["images"]!.map((x) => x)),
-    creationAt: json["creationAt"] == null ? null : DateTime.parse(json["creationAt"]),
-    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+    images: json["images"] == null ? [] : List<String>.from(json["images"].map((x) => x)),
+    creationAt: json["creationAt"] == null ? null : DateTime.tryParse(json["creationAt"]),
+    updatedAt: json["updatedAt"] == null ? null : DateTime.tryParse(json["updatedAt"]),
     category: json["category"] == null ? null : Category.fromJson(json["category"]),
   );
 
@@ -46,6 +52,11 @@ class EcommerceModel {
     "updatedAt": updatedAt?.toIso8601String(),
     "category": category?.toJson(),
   };
+
+  // Updated method to parse a List<EcommerceModel>
+  static List<EcommerceModel> listFromJson(List<dynamic> jsonList) {
+    return jsonList.map((data) => EcommerceModel.fromJson(data)).toList();
+  }
 }
 
 class Category {
@@ -63,16 +74,22 @@ class Category {
     this.updatedAt,
   });
 
-  factory Category.fromRawJson(String str) => Category.fromJson(json.decode(str));
+  factory Category.fromRawJson(String str) {
+    try {
+      return Category.fromJson(json.decode(str));
+    } catch (e) {
+      throw FormatException("Invalid JSON: $e");
+    }
+  }
 
   String toRawJson() => json.encode(toJson());
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
     id: json["id"],
-    name: nameValues.map[json["name"]]!,
+    name: nameValues.map[json["name"]] ?? Name.MISCELLANEOUS, // Defaulting to MISCELLANEOUS if null or unknown
     image: json["image"],
-    creationAt: json["creationAt"] == null ? null : DateTime.parse(json["creationAt"]),
-    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+    creationAt: json["creationAt"] == null ? null : DateTime.tryParse(json["creationAt"]),
+    updatedAt: json["updatedAt"] == null ? null : DateTime.tryParse(json["updatedAt"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -84,13 +101,7 @@ class Category {
   };
 }
 
-enum Name {
-  ELECTRONICS,
-  FURNITURE,
-  MISCELLANEOUS,
-  NUEVO,
-  SHOES
-}
+enum Name { ELECTRONICS, FURNITURE, MISCELLANEOUS, NUEVO, SHOES }
 
 final nameValues = EnumValues({
   "Electronics": Name.ELECTRONICS,
@@ -101,7 +112,7 @@ final nameValues = EnumValues({
 });
 
 class EnumValues<T> {
-  Map<String, T> map;
+  final Map<String, T> map;
   late Map<T, String> reverseMap;
 
   EnumValues(this.map);

@@ -16,12 +16,11 @@ import '../../../data/offline/cache_helper.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  final Repository repository;
   File? _imageFile;
   final ImagePicker _picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
 
-  AuthCubit(this.repository) : super(AuthInitial());
+  AuthCubit() : super(AuthInitial());
 
   /// Register a new user
   Future<void> registerUser(
