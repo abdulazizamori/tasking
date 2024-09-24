@@ -17,13 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocConsumer<EcommerceCubit, EcommerceState>(
       listener: (context, state) {},
       builder: (context, state) {
-        final cubit = context.read<EcommerceCubit>();
         return SafeArea(
           child: Scaffold(
             
             backgroundColor: Colors.black,
             body: state is EcommerceLoaded
-                ? Column(
+                ? const Column(
               children: [
                 CustomAppBar(),
                 SizedBox(height: 10),

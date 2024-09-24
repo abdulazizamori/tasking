@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -6,7 +5,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
-import 'package:tasking/data/repo/repo.dart';
 
 import '../../../core/di/di.dart';
 import '../../../core/network/dio.dart';
@@ -18,7 +16,7 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   File? _imageFile;
   final ImagePicker _picker = ImagePicker();
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
 
   AuthCubit() : super(AuthInitial());
 
@@ -40,7 +38,7 @@ class AuthCubit extends Cubit<AuthState> {
       };
 
       Response response =
-      await di<DioHelper>().postData(url: regUrl, data: data);
+          await di<DioHelper>().postData(url: regUrl, data: data);
       print(response.data);
 
       if (response.statusCode == 200) {
@@ -57,7 +55,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> pickImage() async {
     try {
       final XFile? pickedImage =
-      await _picker.pickImage(source: ImageSource.gallery);
+          await _picker.pickImage(source: ImageSource.gallery);
       if (pickedImage != null) {
         _imageFile = File(pickedImage.path);
         emit(ImagePicked(_imageFile!));
