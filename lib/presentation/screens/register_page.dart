@@ -164,7 +164,9 @@ class _RegisterpageState extends State<Registerpage> {
                         children: [
                           const Text("Already have an account?"),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'home_page');
+                              },
                               child: const Text(
                                 "Login",
                                 style: TextStyle(color: Colors.purple),

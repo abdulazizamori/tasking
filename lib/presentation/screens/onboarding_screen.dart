@@ -46,12 +46,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             text: 'Continu to the Home Screen',
             btnText: 'Get Started',
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>  const Registerpage(),
-                ),
-              );
+              Navigator.pushNamed(context, 'register');
             },
           ),
         ],
