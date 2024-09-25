@@ -23,60 +23,87 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-  String? _errorMessage;
-
-  @override
-  void initState() {
-    super.initState();
-    context.read<AuthCubit>().checkLoginStatus(); // Check login status in Cubit
-  }
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is LoggedIn) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
+        if (state is AuthSuccess) {
+          print('AuthSuccess triggered: Navigating to home_page');
+          Navigator.pushReplacementNamed(context, 'home_page');
+        } else if (state is AuthFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.error)),
           );
-        } else if (state is LoggedOut) {
-          setState(() {
-            _errorMessage = "Invalid username or password"; // Update the UI with error
-          });
         }
       },
       builder: (context, state) {
-        final auth = context.read<AuthCubit>();
-
+        if (state is AuthLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
         return Scaffold(
-          appBar: AppBar(title: const Text('Login')),
+          appBar: AppBar(title: const Text('Welcome Back!')),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextField(
-                  controller: _usernameController,
-                  decoration: const InputDecoration(labelText: 'Username'),
+                const Text(
+                  'Login to Your Account',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
+                const SizedBox(height: 40),
                 TextField(
-                  controller: _passwordController,
-                  decoration: const InputDecoration(labelText: 'Password'),
+                  controller: usernameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Username',
+                    prefixIcon: Icon(Icons.person),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(
+                    labelText: 'Password',
+                    prefixIcon: Icon(Icons.lock),
+                    border: OutlineInputBorder(),
+                  ),
                   obscureText: true,
                 ),
                 const SizedBox(height: 20),
-                if (_errorMessage != null) ...[
-                  Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
-                  const SizedBox(height: 20),
-                ],
                 ElevatedButton(
                   onPressed: () {
-                    auth.login(_usernameController.text, _passwordController.text);
+                    context.read<AuthCubit>().signin(
+                      usernameController.text,
+                      passwordController.text,
+                    );
                   },
                   child: const Text('Login'),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    textStyle: const TextStyle(fontSize: 16),
+                    minimumSize: const Size(double.infinity, 50), // Full width button
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account? "),
+                    TextButton(
+                      onPressed: () {
+                        // Navigate to Create Account Screen
+                        Navigator.pushReplacementNamed(context, 'register');
+                      },
+                      child: const Text(
+                        'Create Account',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

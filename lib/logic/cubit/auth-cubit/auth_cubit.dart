@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/di/di.dart';
 import '../../../core/network/dio.dart';
@@ -18,13 +19,15 @@ class AuthCubit extends Cubit<AuthState> {
   final ImagePicker _picker = ImagePicker();
   // final _formKey = GlobalKey<FormState>();
 
-  AuthCubit() : super(AuthInitial());
+  AuthCubit() : super(AuthInitial()){
+    checkAuthStatus();
+  }
 
   /// Register a new user
   Future<void> registerUser(
       String email, String password, String name, String? avatar) async {
     if (_imageFile == null) {
-      emit(UserAuthError("No image selected."));
+      emit(UserCreateError("No image selected."));
       return;
     }
 
@@ -41,13 +44,13 @@ class AuthCubit extends Cubit<AuthState> {
           await di<DioHelper>().postData(url: regUrl, data: data);
       print(response.data);
 
-      if (response.statusCode == 200) {
-        emit(UserAuthSuccess());
+      if (response.statusCode == 201) {
+        emit(UserCreateSuccess());
       } else {
-        emit(UserAuthFailure(response.statusCode, response.data));
+        emit(UserCreateFailure(response.statusCode, response.data));
       }
     } catch (e) {
-      emit(UserAuthError("Error occurred: $e"));
+      emit(UserCreateError("Error occurred: $e"));
     }
   }
 
@@ -60,10 +63,10 @@ class AuthCubit extends Cubit<AuthState> {
         _imageFile = File(pickedImage.path);
         emit(ImagePicked(_imageFile!));
       } else {
-        emit(UserAuthError("Image picking cancelled."));
+        emit(UserCreateError("Image picking cancelled."));
       }
     } catch (e) {
-      emit(UserAuthError("Error picking image: $e"));
+      emit(UserCreateError("Error picking image: $e"));
     }
   }
 
@@ -73,28 +76,61 @@ class AuthCubit extends Cubit<AuthState> {
     return "https://your-storage-service.com/images/${image.path.split('/').last}";
   }
 
-  /// Login function
-  Future<void> login(String username, String password) async {
-    try {
-      if (username == 'user' && password == 'pass') {
-        await CacheHelper().setData(key: 'isLoggedIn', value: true);
-        emit(LoggedIn());
-      } else {
-        emit(LoginError("Invalid username or password"));
-      }
-    } catch (e) {
-      emit(LoginError("Error occurred: $e"));
+
+
+
+  Future<void> signin(String email,String password)async {
+    emit(AuthLoading());
+
+    try{
+    Map<String, dynamic> data = {
+      "email": email,
+      "password": password,
+    };
+    Response response =
+    await di<DioHelper>().postData(url: signInUrl, data: data);
+    print(response.statusCode);
+    if (response.statusCode == 201) {
+      // Extract the token from the response
+      String token = response.data['access_token'];
+      print(response.data);
+
+
+      // Save the token using SharedPreferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('auth_token', token);
+
+      emit(AuthSuccess(token)); // Emit success with token
+    } else {
+      emit(AuthFailure('Invalid credentials'));
     }
+  } catch (e) {
+  emit(UserCreateError("Error occurred: $e"));
+  }
+
   }
 
   /// Check login status from cache
-  Future<void> checkLoginStatus() async {
-    bool isLoggedIn =
-        CacheHelper.sharedPreferences.getBool('isLoggedIn') ?? false;
-    if (isLoggedIn) {
-      emit(LoggedIn());
+  Future<void> checkAuthStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('auth_token');
+
+    if (token != null) {
+      emit(AuthSuccess(token)); // User is already authenticated
     } else {
-      emit(LoggedOut());
+      emit(AuthInitial()); // No token found, back to initial state
     }
   }
+
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.get('auth_token'));
+    await prefs.remove('auth_token');
+    print(prefs.get('auth_token'));
+    print('User logged out'); // Debug statement
+    emit(AuthInitial()); // Emit the initial state after logout
+  }
+
+
+
 }

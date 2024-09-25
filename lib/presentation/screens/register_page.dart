@@ -152,8 +152,10 @@ class _RegisterpageState extends State<Registerpage> {
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            auth.registerUser(email.text, pass.text, name.text,
+                           var response =  auth.registerUser(email.text, pass.text, name.text,
                                 _imageFile.toString());
+
+                            Navigator.pushNamed(context, 'home_page');
                           },
                           child: const Text("Sign up")),
                       const SizedBox(
@@ -165,7 +167,7 @@ class _RegisterpageState extends State<Registerpage> {
                           const Text("Already have an account?"),
                           TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, 'home_page');
+                                Navigator.pushReplacementNamed(context, 'Log_in');
                               },
                               child: const Text(
                                 "Login",

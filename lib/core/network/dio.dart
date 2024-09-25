@@ -52,7 +52,7 @@ class DioImplementation extends DioHelper{
       {String? url, dynamic data, String? token, dynamic param}) async {
     dio.options.headers = {
       'Authorization': 'Bearer $token',
-      'accept': 'application/json'
+      'accept': 'application/json',
     };
     return await dio.get(
       url!,

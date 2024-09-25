@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasking/logic/cubit/auth-cubit/auth_cubit.dart';
 import '../../logic/cubit/products-cubit/ecommerce_cubit.dart';
 import '../widgets/custom-app-bar.dart';
 import '../widgets/custom-gridview.dart';
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
-            
+
             backgroundColor: Colors.black,
             body: state is EcommerceLoaded
                 ? const Column(

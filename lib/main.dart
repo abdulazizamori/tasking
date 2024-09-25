@@ -4,6 +4,7 @@ import 'package:tasking/core/di/di.dart';
 import 'package:tasking/logic/cubit/auth-cubit/auth_cubit.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 import 'package:tasking/presentation/screens/home_page.dart';
+import 'package:tasking/presentation/screens/home_screen.dart';
 import 'package:tasking/presentation/screens/login.dart';
 import 'package:tasking/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            initialRoute: 'home_page',
+            initialRoute: 'Log_in',
             routes: {
               'Log_in': (context) => const LoginScreen(),
               'register': (context) => const Registerpage(),

@@ -5,29 +5,31 @@ abstract class AuthState {}
 
 class AuthInitial extends AuthState {}
 
-class UserAuthSuccess extends AuthState {}
+class UserCreateSuccess extends AuthState {}
 
-class UserAuthFailure extends AuthState {
+class UserCreateFailure extends AuthState {
   final int? statusCode;
   final dynamic message;
 
-  UserAuthFailure(this.statusCode, this.message);
+  UserCreateFailure(this.statusCode, this.message);
 }
 
-class UserAuthError extends AuthState {
+class UserCreateError extends AuthState {
   final String error;
 
-  UserAuthError(this.error);
+  UserCreateError(this.error);
 }
 
-class LoggedIn extends AuthState {}
+class AuthLoading extends AuthState {}
 
-class LoggedOut extends AuthState {}
+class AuthSuccess extends AuthState {
+  final String token;
+  AuthSuccess(this.token);
+}
 
-class LoginError extends AuthState {
+class AuthFailure extends AuthState {
   final String error;
-
-  LoginError(this.error);
+  AuthFailure(this.error);
 }
 
 class ImagePicked extends AuthState {
