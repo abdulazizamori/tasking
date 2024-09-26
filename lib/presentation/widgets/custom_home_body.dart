@@ -19,7 +19,7 @@ class CustomHomeBody extends StatelessWidget {
             height: 20.h,
           ),
           // text form field
-          const CustomTextForm(),
+          // const CustomTextForm(),
           SizedBox(
             height: 20.h,
           ),
@@ -44,7 +44,7 @@ class CustomHomeBody extends StatelessWidget {
           SizedBox(
             height: 5.h,
           ),
-          CustomGridProducts(),
+          const CustomGridProducts(),
         ],
       ),
     );

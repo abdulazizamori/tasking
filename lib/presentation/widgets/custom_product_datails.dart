@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:tasking/data/model/ecommerce-model.dart';
 import 'package:tasking/presentation/widgets/custom_page_indicator.dart';
 
 class CustomProductDatails extends StatelessWidget {
-  const CustomProductDatails({super.key});
-
+  const CustomProductDatails({super.key, required this.ecommerceModel});
+  final EcommerceModel ecommerceModel;
   @override
   Widget build(BuildContext context) {
     PageController pageController = PageController();
@@ -29,13 +29,17 @@ class CustomProductDatails extends StatelessWidget {
                 );
               },
               controller: pageController,
-              itemCount: 3,
+              itemCount: ecommerceModel.images!.length,
               itemBuilder: (context, index) {
                 return ClipRRect(
                   borderRadius:
                       BorderRadius.circular(20.0), // Adjust the radius here
-                  child: Image.asset(
-                    'assets/images/first.jpeg', // Replace with your image asset
+                  child: Image.network(
+                    ecommerceModel.images![index] ==
+                            'https://placeimg.com/640/480/any'
+                        ? 'https://cdn-icons-png.flaticon.com/512/6478/6478111.png'
+                        : ecommerceModel
+                            .images![index], // Replace with your image asset
                     width: 300.w, // Set a width
                     height: 200.h, // Set a height
                     fit: BoxFit.fill, // Adjust the fit as needed
@@ -56,7 +60,7 @@ class CustomProductDatails extends StatelessWidget {
             height: 50.h,
           ),
           Text(
-            'Classic Red Pullover Hoodie',
+            ecommerceModel.title!,
             style: TextStyle(
               fontSize: 24.sp,
             ),
@@ -65,7 +69,7 @@ class CustomProductDatails extends StatelessWidget {
             height: 20.h,
           ),
           Text(
-            'Elevate your casual wardrobe with our Classic Red Pullover Hoodie. Crafted with a soft cotton blend for ultimate comfort, this vibrant red hoodie features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs for a snug fit. The timeless design ensures easy pairing with jeans or joggers for a relaxed yet stylish look, making it a versatile addition to your everyday attire.',
+            ecommerceModel.description!,
             style: TextStyle(
               fontSize: 17.sp,
             ),
@@ -84,7 +88,7 @@ class CustomProductDatails extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  '100 \$',
+                  '${ecommerceModel.price.toString()} \$',
                   style: TextStyle(
                     fontSize: 17.sp,
                     color: Colors.white,
