@@ -32,6 +32,7 @@ class CustomListViewCategory extends StatelessWidget {
                     shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(40),
                     ),
+                    
                     child: CircleAvatar(
                       radius: 35,
                       backgroundImage: NetworkImage(

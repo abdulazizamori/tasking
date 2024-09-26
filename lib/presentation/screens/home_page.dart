@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
-import 'package:tasking/presentation/screens/product_details_screen.dart';
 import 'package:tasking/presentation/widgets/custom_home_body.dart';
 
 class HomePage extends StatefulWidget {

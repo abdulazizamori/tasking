@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasking/presentation/widgets/custom_page_indicator.dart';
+import 'package:tasking/shared/const.dart';
 
 class CustomOnboardPage extends StatelessWidget {
   const CustomOnboardPage({
@@ -65,7 +66,9 @@ class CustomOnboardPage extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        const CustomPageIndicator(),
+        CustomPageIndicator(
+          controller: nextPage,
+        ),
         const SizedBox(
           height: 50,
         ),

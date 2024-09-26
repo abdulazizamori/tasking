@@ -5,12 +5,8 @@ import 'package:tasking/core/di/di.dart';
 import 'package:tasking/logic/cubit/auth-cubit/auth_cubit.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 import 'package:tasking/presentation/screens/home_page.dart';
-import 'package:tasking/presentation/screens/home_screen.dart';
-import 'package:tasking/presentation/screens/login.dart';
-import 'package:tasking/presentation/screens/onboarding_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tasking/presentation/screens/register_page.dart';
-import 'package:tasking/presentation/screens/splash_screen.dart';
+import 'package:tasking/presentation/screens/product_details_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +45,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: HomePage(),
+            home: const ProductDetailsScreen(),
             // initialRoute: (token != null ? 'Log_in' : 'home_page'),
             // routes: {
             //   'Log_in': (context) => const LoginScreen(),
