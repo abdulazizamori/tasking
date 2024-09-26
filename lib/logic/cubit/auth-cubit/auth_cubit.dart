@@ -124,7 +124,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(prefs.get('auth_token'));
+    print('user token:${prefs.get('auth_token')}');
     await prefs.remove('auth_token');
     print(prefs.get('auth_token'));
     print('User logged out'); // Debug statement

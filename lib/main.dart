@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasking/core/di/di.dart';
+import 'package:tasking/data/offline/cache_helper.dart';
 import 'package:tasking/logic/cubit/auth-cubit/auth_cubit.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 import 'package:tasking/presentation/screens/home_page.dart';
@@ -14,11 +16,16 @@ import 'package:tasking/presentation/screens/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await init();
-  runApp(const MyApp());
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var token = prefs.getString('auth_token');
+  runApp(MyApp(token: token));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String? token;
+
+  const MyApp({super.key, this.token});
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -43,12 +50,12 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            initialRoute: 'Log_in',
+            initialRoute: (token != null ? 'home_page' : 'Log_in'),
             routes: {
               'Log_in': (context) => const LoginScreen(),
               'register': (context) => const Registerpage(),
               'onboarding': (context) => const OnboardingScreen(),
-              'home_page': (context) => const HomePage(),
+              'home_page': (context) => const HomeScreen(),
               'splash': (context) => const SplashScreen(),
             },
           ),

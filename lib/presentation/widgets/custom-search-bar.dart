@@ -56,6 +56,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
               IconButton(
                   onPressed: () {
                     di<AuthCubit>().logout();
+                    Navigator.pushReplacementNamed(context, 'Log_in');
                   },
                   icon: Icon(
                     Icons.list,
