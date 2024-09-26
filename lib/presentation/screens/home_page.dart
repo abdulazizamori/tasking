@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
+import 'package:tasking/presentation/screens/product_details_screen.dart';
 import 'package:tasking/presentation/widgets/custom_home_body.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,44 +26,66 @@ class _HomePageState extends State<HomePage> {
             ),
             backgroundColor: Colors.black,
             centerTitle: true,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const CircleAvatar(
-                  radius: 15,
-                  backgroundImage: AssetImage('assets/images/ecommerse.png'),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                Text(
-                  'Store',
-                  style: TextStyle(
-                    fontSize: 24.sp,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
+            title: Text(
+              'Store',
+              style: TextStyle(
+                fontSize: 24.sp,
+                color: Colors.white,
+              ),
             ),
           ),
           drawer: Drawer(
+            backgroundColor: Colors.black,
             child: Column(
               children: [
                 DrawerHeader(
-                  child: Center(
-                    child: Text('Hello "user"'),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      SizedBox(
+                        width: 15.w,
+                      ),
+                      Text(
+                        'Hello "user"',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24.sp,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 const Spacer(),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                  ),
-                  child: const Text(
-                    'Log out',
-                    style: TextStyle(
-                      color: Colors.white,
+                SizedBox(
+                  width: 200.w,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 159, 26, 17),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.logout_rounded,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 15.w,
+                        ),
+                        Text(
+                          'Log out',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30.sp,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

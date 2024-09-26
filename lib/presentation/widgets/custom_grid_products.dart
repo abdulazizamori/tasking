@@ -22,18 +22,26 @@ class CustomGridProducts extends StatelessWidget {
             crossAxisSpacing: 15,
           ),
           itemBuilder: (context, index) {
+            var imageUrl = cubit.eComodel[index].images!.first;
+            imageUrl = imageUrl
+                .replaceAll("[", "")
+                .replaceAll("]", "")
+                .replaceAll("\"", "");
             return Card(
               elevation: 10,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    ////////////////////////////////////////////////////////////////////////////
-                    child: Image.network(
-                      cubit.eComodel[index].images!.first,
-                      height: 200,
-                      fit: BoxFit.fill,
+                  Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      ////////////////////////////////////////////////////////////////////////////
+                      child: Image.network(
+                        imageUrl,
+                        height: 95.h,
+                        width: 145.w,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                   Padding(

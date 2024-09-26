@@ -53,6 +53,7 @@ class MyApp extends StatelessWidget {
             // initialRoute: (token != null ? 'Log_in' : 'home_page'),
             // routes: {
             //   'Log_in': (context) => const LoginScreen(),
+            //   'product_details': (context) => const ProductDetailsScreen(),
             //   'register': (context) => const Registerpage(),
             //   'onboarding': (context) => const OnboardingScreen(),
             //   'home_page': (context) => const HomeScreen(),
