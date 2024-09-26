@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasking/core/di/di.dart';
-import 'package:tasking/data/offline/cache_helper.dart';
 import 'package:tasking/logic/cubit/auth-cubit/auth_cubit.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 import 'package:tasking/presentation/screens/home_page.dart';
@@ -50,14 +49,15 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            initialRoute: (token != null ? 'home_page' : 'Log_in'),
-            routes: {
-              'Log_in': (context) => const LoginScreen(),
-              'register': (context) => const Registerpage(),
-              'onboarding': (context) => const OnboardingScreen(),
-              'home_page': (context) => const HomeScreen(),
-              'splash': (context) => const SplashScreen(),
-            },
+            home: HomePage(),
+            // initialRoute: (token != null ? 'Log_in' : 'home_page'),
+            // routes: {
+            //   'Log_in': (context) => const LoginScreen(),
+            //   'register': (context) => const Registerpage(),
+            //   'onboarding': (context) => const OnboardingScreen(),
+            //   'home_page': (context) => const HomeScreen(),
+            //   'splash': (context) => const SplashScreen(),
+            // },
           ),
         );
       },

@@ -30,9 +30,9 @@ class CustomGridProducts extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     ////////////////////////////////////////////////////////////////////////////
-                    child: Image.asset(
-                      // '${cubit.eComodel[index].images![index][1]}',
-                      'assets/images/second.jpeg',
+                    child: Image.network(
+                      cubit.eComodel[index].images!.first,
+                      height: 200,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -57,7 +57,8 @@ class CustomGridProducts extends StatelessWidget {
                         ),
                         Align(
                           alignment: Alignment.bottomRight,
-                          child: Text('${cubit.eComodel[index].price!.toString()} \$'),
+                          child: Text(
+                              '${cubit.eComodel[index].price!.toString()} \$'),
                         ),
                       ],
                     ),
