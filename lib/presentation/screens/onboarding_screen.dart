@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasking/presentation/screens/register_page.dart';
+
 import 'package:tasking/presentation/widgets/custom_onboard_page.dart';
 import 'package:tasking/shared/const.dart';
 

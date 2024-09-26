@@ -8,16 +8,17 @@ import '../../../data/repo/repo.dart';
 part 'ecommerce_state.dart';
 
 class EcommerceCubit extends Cubit<EcommerceState> {
-  List<EcommerceModel>? Ecomodel;
+  List<EcommerceModel> eComodel=[];
   final Repository repotisory;
   EcommerceCubit(this.repotisory) : super(EcommerceInitial());
 
   Future<void>? getEcommerceData() async {
     try {
-      final value = await repotisory.getAllData();
-      return repotisory.getAllData().then((value) {
+      // final value = await repotisory.getAllData();
+      return await repotisory.getAllData().then((value) {
         if (value != null && value.data != null) {
-          Ecomodel = EcommerceModel.listFromJson(value.data);
+          eComodel = EcommerceModel.listFromJson(value.data);
+          print(eComodel);
           emit(EcommerceLoaded());
         }
       });

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 
-
 class CustomGridView extends StatefulWidget {
   const CustomGridView({super.key});
 
@@ -23,7 +22,7 @@ class _CustomGridViewState extends State<CustomGridView> {
             width: 400.w,
             color: Colors.white,
             child: ListView.builder(
-              itemCount: cubit.Ecomodel!.length,
+              itemCount: cubit.eComodel!.length,
               physics: BouncingScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
@@ -37,16 +36,18 @@ class _CustomGridViewState extends State<CustomGridView> {
                         scrollDirection: Axis.horizontal,
                         physics: BouncingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: cubit.Ecomodel![index].images!.length,
+                        itemCount: cubit.eComodel![index].images!.length,
                         itemBuilder: (context, imageIndex) {
-                          var imageUrl = cubit.Ecomodel![index].images![imageIndex];
+                          var imageUrl =
+                              cubit.eComodel![index].images![imageIndex];
 
                           // Clean the URL from the format ["https://..."]
                           if (imageUrl != null && imageUrl.isNotEmpty) {
                             imageUrl = imageUrl
                                 .replaceAll("[", "")
                                 .replaceAll("]", "")
-                                .replaceAll("\"", ""); // Remove brackets and quotes
+                                .replaceAll(
+                                    "\"", ""); // Remove brackets and quotes
 
                             return Image.network(
                               imageUrl,
@@ -65,16 +66,16 @@ class _CustomGridViewState extends State<CustomGridView> {
                       ),
                     ),
                     title: Text(
-                      "Title: ${cubit.Ecomodel![index].title.toString()}",
+                      "Title: ${cubit.eComodel![index].title.toString()}",
                       style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                     subtitle: Text(
                       maxLines: 3,
-                      "${cubit.Ecomodel![index].description.toString()}",
+                      "${cubit.eComodel![index].description.toString()}",
                       style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                     trailing: Text(
-                      "${cubit.Ecomodel![index].price.toString()} \$",
+                      "${cubit.eComodel![index].price.toString()} \$",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,

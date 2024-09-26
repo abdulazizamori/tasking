@@ -1,63 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 
 class CustomGridProducts extends StatelessWidget {
   const CustomGridProducts({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: 100,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 15,
-      ),
-      itemBuilder: (context, index) {
-        return Container(
-          // color: Colors.blue,
-          child: Card(
-            elevation: 10,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    'assets/images/second.jpeg',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                    top: 5,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Title of Product',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      const Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text('100 \$')),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+    return BlocConsumer<EcommerceCubit, EcommerceState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        final cubit = context.read<EcommerceCubit>();
+        return GridView.builder(
+          itemCount: cubit.eComodel.length,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 15,
           ),
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    ////////////////////////////////////////////////////////////////////////////
+                    child: Image.asset(
+                      // '${cubit.eComodel[index].images![index][1]}',
+                      'assets/images/second.jpeg',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 10,
+                      right: 10,
+                      top: 5,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          cubit.eComodel[index].title!,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Text('${cubit.eComodel[index].price!.toString()} \$'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         );
       },
     );

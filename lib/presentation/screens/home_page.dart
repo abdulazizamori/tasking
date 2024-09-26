@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     return BlocConsumer<EcommerceCubit, EcommerceState>(
       listener: (context, state) {},
       builder: (context, state) {
-        // final cubit = context.read<EcommerceCubit>();
+        final cubit = context.read<EcommerceCubit>();
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
@@ -42,7 +42,13 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          body: const CustomHomeBody(),
+          body: state is EcommerceLoaded
+              ? CustomHomeBody()
+              : const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                ),
         );
       },
     );
