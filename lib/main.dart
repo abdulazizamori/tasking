@@ -16,8 +16,8 @@ import 'package:tasking/presentation/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await init();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+    await init();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
   var token = prefs.getString('auth_token');
   runApp(MyApp(token: token));
 }
