@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
             home: const HomePage(),
             initialRoute: (token != null ? 'Log_in' : 'home_page'),
             routes: {
+              //WESAM
               'Log_in': (context) => const LoginScreen(),
               'product_details': (context) => ProductDetailsScreen(ecommerceModel: di<EcommerceModel>(),),
               'register': (context) => const Registerpage(),
