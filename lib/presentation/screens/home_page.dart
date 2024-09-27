@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 import 'package:tasking/presentation/widgets/custom_home_body.dart';
 
+import '../../core/di/di.dart';
+import '../../logic/cubit/auth-cubit/auth_cubit.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -62,7 +65,10 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   width: 200.w,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      di<AuthCubit>().logout();
+                      Navigator.pushReplacementNamed(context, 'Log_in');
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 159, 26, 17),
                     ),

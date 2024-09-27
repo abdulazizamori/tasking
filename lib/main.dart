@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasking/core/di/di.dart';
+import 'package:tasking/data/model/ecommerce-model.dart';
 import 'package:tasking/logic/cubit/auth-cubit/auth_cubit.dart';
 import 'package:tasking/logic/cubit/products-cubit/ecommerce_cubit.dart';
 import 'package:tasking/presentation/screens/home_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tasking/presentation/screens/home_screen.dart';
+import 'package:tasking/presentation/screens/login.dart';
+import 'package:tasking/presentation/screens/onboarding_screen.dart';
 import 'package:tasking/presentation/screens/product_details_screen.dart';
+import 'package:tasking/presentation/screens/register_page.dart';
+import 'package:tasking/presentation/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,15 +52,15 @@ class MyApp extends StatelessWidget {
               useMaterial3: true,
             ),
             home: const HomePage(),
-            // initialRoute: (token != null ? 'Log_in' : 'home_page'),
-            // routes: {
-            //   'Log_in': (context) => const LoginScreen(),
-            //   'product_details': (context) => const ProductDetailsScreen(),
-            //   'register': (context) => const Registerpage(),
-            //   'onboarding': (context) => const OnboardingScreen(),
-            //   'home_page': (context) => const HomeScreen(),
-            //   'splash': (context) => const SplashScreen(),
-            // },
+            initialRoute: (token != null ? 'Log_in' : 'home_page'),
+            routes: {
+              'Log_in': (context) => const LoginScreen(),
+              'product_details': (context) => ProductDetailsScreen(ecommerceModel: di<EcommerceModel>(),),
+              'register': (context) => const Registerpage(),
+              'onboarding': (context) => const OnboardingScreen(),
+              'home_page': (context) => const HomePage(),
+              'splash': (context) => const SplashScreen(),
+            },
           ),
         );
       },
