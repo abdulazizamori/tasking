@@ -21,7 +21,7 @@ void main() async {
   var token = prefs.getString('auth_token');
   runApp(MyApp(token: token));
 }
-//
+
 class MyApp extends StatelessWidget {
   final String? token;
 
@@ -61,6 +61,7 @@ class MyApp extends StatelessWidget {
               'onboarding': (context) => const OnboardingScreen(),
               'home_page': (context) => const HomePage(),
               'splash': (context) => const SplashScreen(),
+
             },
           ),
         );
