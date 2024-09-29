@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:tasking/data/online/endpoints.dart';
+import 'package:tasking/core/network/endpoints.dart';
 
 abstract class DioHelper{
 
@@ -47,11 +47,12 @@ class DioImplementation extends DioHelper{
     return await dio.put(url!, data: data, queryParameters: {});
   }
 
+  @override
   Future<Response> getData(
       {String? url, dynamic data, String? token, dynamic param}) async {
     dio.options.headers = {
       'Authorization': 'Bearer $token',
-      'accept': 'application/json'
+      'accept': 'application/json',
     };
     return await dio.get(
       url!,
